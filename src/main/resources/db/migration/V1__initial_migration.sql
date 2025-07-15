@@ -4,7 +4,7 @@ create table users
         primary key,
     name    varchar(255) not null,
     email   varchar(255) null,
-    passwod varchar(255) not null
+    password varchar(255) not null
 );
 
 create table addresses
