@@ -1,12 +1,17 @@
 package com.malcolm.cwmstore;
 
-import org.springframework.boot.SpringApplication;
+import com.malcolm.cwmstore.entities.User;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class CwmStoreApplication {
     public static void main(String[] args) {
-        ApplicationContext context = SpringApplication.run(CwmStoreApplication.class, args);
+        // ApplicationContext context = SpringApplication.run(CwmStoreApplication.class, args);
+        var user = User.builder()
+                .id(1L)
+                .name("John")
+                .password("password")
+                .email("john@example.com")
+                .build();
     }
 }
