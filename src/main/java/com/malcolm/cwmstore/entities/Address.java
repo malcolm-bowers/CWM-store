@@ -3,28 +3,32 @@ package com.malcolm.cwmstore.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "addresses")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false, name = "street")
+    @Column(name = "street")
     private String street;
 
-    @Column(nullable = false, name = "city")
+    @Column(name = "city")
     private String city;
 
-    @Column(nullable = false, name = "zip")
+    @Column(name = "zip")
     private String zip;
 
-    @Column(nullable = false, name = "state")
+    @Column(name = "state")
     private String state;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
