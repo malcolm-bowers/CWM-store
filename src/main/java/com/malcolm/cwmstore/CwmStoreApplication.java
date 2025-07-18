@@ -1,5 +1,6 @@
 package com.malcolm.cwmstore;
-import com.malcolm.cwmstore.entities.Address;
+
+import com.malcolm.cwmstore.entities.Profile;
 import com.malcolm.cwmstore.entities.User;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -13,14 +14,13 @@ public class CwmStoreApplication {
                 .email("john@email.com")
                 .build();
 
-        Address address = Address.builder()
-                .street("street")
-                .city("city")
-                .state("state")
-                .zip("zip")
-                .build();
+        var profile = Profile.builder()
+                        .bio("bio")
+                        .build();
 
-        user.addAddress(address);
+        user.setProfile(profile);
+        profile.setUser(user);
+
         System.out.println(user);
     }
 }

@@ -3,13 +3,14 @@ package com.malcolm.cwmstore.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+@Entity
+@Table(name = "addresses")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
-@Table(name = "addresses")
+@ToString
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,5 +31,6 @@ public class Address {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @ToString.Exclude
     private User user;
 }

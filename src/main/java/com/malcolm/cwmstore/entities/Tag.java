@@ -3,8 +3,13 @@ package com.malcolm.cwmstore.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
+@NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "tags")
 public class Tag {
@@ -15,4 +20,12 @@ public class Tag {
 
     @Column(name = "name")
     private String name;
+
+    public Tag(String name) {
+        this.name = name;
+    }
+
+    @ManyToMany(mappedBy = "tags")
+    @ToString.Exclude
+    private Set<User> users = new HashSet<>();
 }
