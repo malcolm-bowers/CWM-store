@@ -1,26 +1,23 @@
 package com.malcolm.cwmstore;
 
-import com.malcolm.cwmstore.entities.Profile;
 import com.malcolm.cwmstore.entities.User;
+import com.malcolm.cwmstore.repositories.UserRepository;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class CwmStoreApplication {
     public static void main(String[] args) {
-        // ApplicationContext context = SpringApplication.run(CwmStoreApplication.class, args);
-        User user = User.builder()
+        ApplicationContext context = SpringApplication.run(CwmStoreApplication.class, args);
+        var repository = context.getBean(UserRepository.class);
+
+        var user = User.builder()
                 .name("John")
+                .email("john@gmail.com")
                 .password("password")
-                .email("john@email.com")
                 .build();
 
-        var profile = Profile.builder()
-                        .bio("bio")
-                        .build();
-
-        user.setProfile(profile);
-        profile.setUser(user);
-
-        System.out.println(user);
+        repository.save(user);
     }
 }
